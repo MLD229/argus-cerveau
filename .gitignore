@@ -1,0 +1,16 @@
+# Données utilisateur — jamais versionnées
+.env
+.env.EXAMPLE
+memories/
+sessions/
+state.db*
+logs/
+workspace/
+home/
+plans/
+*_cache/
+local/
+
+# Python
+__pycache__/
+*.pyc

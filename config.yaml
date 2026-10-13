@@ -1,0 +1,51 @@
+# ============================================================================
+#  config.yaml — ARGUS (cerveau « Signature Libérale »)
+#
+#  Aucune dépendance à une interface : ce profil tourne aussi bien en
+#  terminal (`hermes -p argus chat`) que derrière une UI web ou un canal de
+#  messagerie.
+#
+#  La clé API est lue depuis la variable d'environnement DEEPSEEK_API_KEY
+#  (voir .env.EXAMPLE après installation), jamais écrite ici.
+# ============================================================================
+model:
+  default: deepseek-chat
+  provider: deepseek
+  base_url: https://api.deepseek.com/v1
+
+agent:
+  effort: high
+  max_turns: 40
+
+# Le client est un particulier non technique : on ne lui montre PAS les
+# commandes ni la mécanique interne.
+display:
+  tool_progress: none
+
+# Dictée : provider LOCAL gratuit (faster-whisper). Ne sert que si l'interface
+# hôte expose un bouton micro ; sans interface, cette clé est simplement
+# inutilisée. Mettre `provider: none` si l'hôte n'a pas faster-whisper.
+stt:
+  provider: local
+
+# L'historique du client ne se réinitialise jamais tout seul.
+session_reset:
+  mode: none
+
+# Outils réellement nécessaires au métier.
+#   - web            : recherche web (téléphone d'agence, multi-sources)
+#   - code_execution : OBLIGATOIRE pour lancer les outils Python (outils/)
+#   - delegation     : sous-agents temporaires = recherche parallèle rapide
+#   - file, memory, skills, todo, clarify : mémoire, procédures, questions
+# Volontairement ABSENTS : terminal (pas d'accès système), cron (pas de
+# tâches planifiées côté client), browser (la collecte passe par les outils).
+platform_toolsets:
+  cli:
+  - web
+  - file
+  - memory
+  - skills
+  - code_execution
+  - clarification
+  - delegation
+  - todo
