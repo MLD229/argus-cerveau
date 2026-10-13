@@ -8,8 +8,10 @@ logs/
 workspace/
 home/
 plans/
+skins/
 *_cache/
 local/
+cron/
 
 # Python
 __pycache__/

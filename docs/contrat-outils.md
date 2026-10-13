@@ -228,7 +228,7 @@ def enrichir_bien(adresse: str, surface: float | None = None, *,
 ## 3. CLI — usage en ligne de commande
 
 ```bash
-cd /home/momo/projects/argus-immo
+cd <racine du dépôt argus-cerveau>
 
 # Zone Bien'ici (OBLIGATOIRE avant toute recherche)
 python3 outils/bienici.py zone "Lyon 6"

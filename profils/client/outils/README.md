@@ -19,7 +19,7 @@
 ## Usage rapide
 
 ```bash
-cd /home/momo/projects/argus-immo
+cd <racine du dépôt argus-cerveau>
 
 # Zone Bien'ici (OBLIGATOIRE avant toute recherche d'annonces)
 python3 outils/bienici.py zone "Lyon 6"

@@ -140,7 +140,7 @@ argus-immo/
 ```
 
 Le **sous-cerveau** (vault Obsidian) vit HORS du repo, monté dans le conteneur :
-`/home/momo/Obsidian/ArgusImmoVault/` (isolé du vault perso `BrainVault`).
+`~/Obsidian/ArgusImmoVault/` (isolé du vault perso de l'opérateur).
 
 ## 5. Ce qui est INTERDIT (conformité)
 

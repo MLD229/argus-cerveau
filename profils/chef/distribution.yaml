@@ -1,0 +1,20 @@
+name: argus-chef
+version: 0.1.0
+description: >-
+  ARGUS — le CHEF. Seul agent qui parle au client : comprend la demande, route
+  vers les skills, les outils Python ou les sous-agents, agrège et rend une
+  réponse courte et sourcée. Outils système complets (terminal, cron, web) :
+  c'est l'agent d'agence, pas le profil client.
+hermes_requires: ">=0.19.0"
+author: MLD229
+license: MIT
+
+env_requires:
+  - name: DEEPSEEK_API_KEY
+    description: "Clé API DeepSeek (modèle du profil)."
+    required: true
+
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - skills/

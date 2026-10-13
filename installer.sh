@@ -27,14 +27,18 @@ TOOLS_DIR="${TOOLS_DIR:-/opt/tools}"
 CHECK=0
 [ "${1:-}" = "--check" ] && CHECK=1
 
+# Les outils vivent sous profils/client/outils/ (le dépôt porte 3 profils).
+SRC_TOOLS="$HERE/profils/client/outils"
+[ -d "$SRC_TOOLS" ] || SRC_TOOLS="$HERE/outils"
+
 die() { echo "ERREUR: $*" >&2; exit 1; }
 say() { echo "[cerveau] $*"; }
 
 # --- 1. Les outils sont-ils présents dans le dépôt ? ------------------------
-[ -d "$HERE/outils" ] || die "dossier 'outils/' absent — le dépôt est-il complet ?"
-count=$(find "$HERE/outils" -maxdepth 1 -name '*.py' | wc -l)
+[ -d "$SRC_TOOLS" ] || die "dossier 'outils/' absent — le dépôt est-il complet ?"
+count=$(find "$SRC_TOOLS" -maxdepth 1 -name '*.py' | wc -l)
 [ "$count" -gt 0 ] || die "aucun script .py dans outils/"
-say "$count script(s) Python trouvés dans outils/"
+say "$count script(s) Python trouvés dans $SRC_TOOLS"
 
 # --- 2. Où poser les outils ? ----------------------------------------------
 if [ "$CHECK" -eq 1 ]; then
@@ -56,8 +60,8 @@ fi
 
 $SUDO mkdir -p "$TOOLS_DIR"
 # On copie les .py + le README, sans les caches.
-$SUDO cp -f "$HERE"/outils/*.py "$TOOLS_DIR"/
-[ -f "$HERE/outils/README.md" ] && $SUDO cp -f "$HERE/outils/README.md" "$TOOLS_DIR"/ 2>/dev/null || true
+$SUDO cp -f "$SRC_TOOLS"/*.py "$TOOLS_DIR"/
+[ -f "$SRC_TOOLS/README.md" ] && $SUDO cp -f "$SRC_TOOLS/README.md" "$TOOLS_DIR"/ 2>/dev/null || true
 $SUDO find "$TOOLS_DIR" -maxdepth 1 -name '__pycache__' -type d -exec rm -rf {} + 2>/dev/null || true
 say "outils installés dans $TOOLS_DIR"
 

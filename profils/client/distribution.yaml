@@ -1,7 +1,7 @@
-name: argus-immo
+name: argus-client
 version: 0.1.0
 description: >-
-  Assistant immobilier « Signature Libérale » — trouve en France des biens
+  ARGUS — Signature Libérale (profil CLIENT). Trouve en France des biens
   pouvant accueillir une profession libérale (cabinets médicaux, paramédicaux,
   avocats…). Cerveau seul, sans interface : utilisable en terminal, derrière
   une UI web, ou via n'importe quel canal de messagerie.
@@ -9,19 +9,17 @@ hermes_requires: ">=0.19.0"
 author: MLD229
 license: MIT
 
-# Ce que l'interface (ou le terminal) doit fournir pour que le cerveau tourne.
+# Ce que le terminal (ou toute interface) doit fournir.
 env_requires:
   - name: DEEPSEEK_API_KEY
     description: "Clé API DeepSeek (le modèle du profil). Sans elle, le chat ne répond pas."
     required: true
 
-# Fichiers que le cerveau possède : mis à jour par `hermes profile update`,
-# jamais écrasés par l'utilisateur par accident.
-# (config.yaml est distribution-owned mais PRÉSERVÉ lors d'un update — voir
-#  la doc Hermes ; passer --force-config pour l'écraser.)
+# Fichiers que le cerveau possède : mis à jour par `hermes profile update`.
+# (config.yaml est distribution-owned mais PRÉSERVÉ lors d'un update —
+#  utiliser --force-config pour l'écraser.)
 distribution_owned:
   - SOUL.md
   - config.yaml
   - skills/
   - outils/
-  - docs/

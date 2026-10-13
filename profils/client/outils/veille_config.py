@@ -6,7 +6,7 @@ Permettre de régler, SANS toucher au code, ce que la veille notifie et à quell
 fréquence — piloté depuis un panneau dans l'interface. La config vit dans un
 fichier JSON partagé (comme le magasin de notifications) :
 
-    <ARGUS_VEILLE_CONFIG> ou /home/momo/.hermes/argus-notifs/veille-config.json
+    <ARGUS_VEILLE_CONFIG> ou ~/.hermes/argus-notifs/veille-config.json
 
 CONTENU
 -------
@@ -69,7 +69,7 @@ class ConfigError(RuntimeError):
 def _fichier() -> str:
     return os.environ.get(
         "ARGUS_VEILLE_CONFIG",
-        "/home/momo/.hermes/argus-notifs/veille-config.json",
+        os.path.expanduser("~/.hermes/argus-notifs/veille-config.json"),
     )
 
 
