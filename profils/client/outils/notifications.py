@@ -104,8 +104,12 @@ def _ecrire(d: dict) -> None:
         # changé sans privilège, mais si le fichier a été créé par un process
         # root (ex. docker exec), l'agent ne pourrait pas le lire -> on le
         # signale par le mode. Le chown réel est fait au déploiement.
+        # Le magasin est partagé entre l'agent (uid 10000) et l'HÔTE (uid 1000,
+        # serveur web de l'interface). Un mode 644 rendrait le fichier
+        # non inscriptible pour l'autre côté -> on force 666 : c'est un magasin
+        # de notifications, aucune donnée sensible, et les deux doivent écrire.
         try:
-            os.chmod(p, 0o644)
+            os.chmod(p, 0o666)
         except OSError:
             pass
     except OSError as exc:
