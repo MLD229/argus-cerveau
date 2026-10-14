@@ -1,0 +1,23 @@
+name: argus-serveur
+version: 0.1.0
+description: >-
+  ARGUS — GESTION DU SERVEUR. N'est pas un agent immobilier : il installe et
+  maintient l'installation Argus sur une machine (interface web, accès
+  extérieur, tâches automatiques de surveillance) et il porte le canal de
+  commandement à distance (une demande déposée dans un dépôt Git privé est lue
+  et exécutée). Parle à un utilisateur non technique : résultat d'abord, zéro
+  commande à l'écran.
+hermes_requires: ">=0.19.0"
+author: MLD229
+license: MIT
+
+env_requires:
+  - name: DEEPSEEK_API_KEY
+    description: "Clé API DeepSeek (modèle du profil)."
+    required: true
+
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - skills/
+  - outils/

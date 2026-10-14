@@ -25,7 +25,7 @@ set -uo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TOOLS_DIR="${TOOLS_DIR:-/opt/tools}"
-ALL=(chef veille client)
+ALL=(chef veille client serveur)
 SELECTED=()
 CHECK=0
 # Préfixe des profils installés. NOM court (chef/veille/client) COLLISIONNE avec
@@ -38,8 +38,8 @@ die() { echo "ERREUR: $*" >&2; exit 1; }
 for a in "$@"; do
   case "$a" in
     --check) CHECK=1 ;;
-    chef|veille|client) SELECTED+=("$a") ;;
-    *) die "profil inconnu : $a (attendu : chef, veille, client)" ;;
+    chef|veille|client|serveur) SELECTED+=("$a") ;;
+    *) die "profil inconnu : $a (attendu : chef, veille, client, serveur)" ;;
   esac
 done
 [ ${#SELECTED[@]} -eq 0 ] && SELECTED=("${ALL[@]}")
