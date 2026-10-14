@@ -30,7 +30,7 @@ import urllib.parse
 import urllib.request
 from datetime import date
 
-UA = "argus-immo-outils/1.0 (contact: momomld904@gmail.com)"
+UA = "argus-immo-outils/1.0 (contact: argus-outils@noreply.github.com)"
 DEFAULT_TIMEOUT = 25
 
 # Miroirs Overpass (essayés dans l'ordre ; le premier sature souvent).

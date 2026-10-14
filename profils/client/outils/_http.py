@@ -13,7 +13,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-UA = "argus-immo-outils/1.0 (contact: momomld904@gmail.com)"
+UA = "argus-immo-outils/1.0 (contact: argus-outils@noreply.github.com)"
 DEFAULT_TIMEOUT = 30
 
 

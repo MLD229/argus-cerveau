@@ -40,7 +40,7 @@
 ### `_http.py`
 
 ```python
-UA = "argus-immo-outils/1.0 (contact: momomld904@gmail.com)"
+UA = "argus-immo-outils/1.0 (contact: argus-outils@noreply.github.com)"
 DEFAULT_TIMEOUT = 30
 
 class ConnectorError(RuntimeError):

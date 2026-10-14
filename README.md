@@ -41,30 +41,58 @@ Le **client** est le profil livrable (celui qu'on donne au particulier) ;
 
 ## Installation
 
+> **Vous partez d'un ordinateur neuf ?** Suivez le guide complet, pas à pas :
+> **`INSTALLATION.md`** dans le dépôt de l'interface
+> (`https://github.com/MLD229/argus-ui/blob/master/INSTALLATION.md`).
+> Il couvre aussi l'installation d'Hermes Agent et l'installation de
+> l'application sur le téléphone, avec une version destinée aux agents IA.
+
+### Prérequis
+
+- **Hermes Agent** installé (`hermes --version` doit répondre) ;
+- **git** ;
+- une **clé d'API DeepSeek** (le modèle).
+
 ### Tout l'écosystème, en une commande
 
 ```bash
-git clone git@github.com:MLD229/argus-cerveau.git
+git clone https://github.com/MLD229/argus-cerveau.git
 cd argus-cerveau
 ./installer-tout.sh
 ```
 
+Les quatre profils s'installent : `argus-chef`, `argus-veille`,
+`argus-client`, `argus-serveur`.
+
 Puis fournir la clé de chaque profil (le script affiche la commande) :
 
 ```bash
-for p in argus-chef argus-veille argus-client; do
-  cp ~/.hermes/profiles/$p/.env.EXAMPLE ~/.hermes/profiles/$p/.env
+echo 'DEEPSEEK_API_KEY=sk-VOTRE-CLE' > ~/.hermes/.env
+chmod 600 ~/.hermes/.env
+for p in argus-chef argus-veille argus-client argus-serveur; do
+  cp ~/.hermes/.env ~/.hermes/profiles/$p/.env 2>/dev/null || true
 done
-$EDITOR ~/.hermes/profiles/argus-client/.env    # renseigner DEEPSEEK_API_KEY
 ```
 
 Essais :
 
 ```bash
-hermes -p argus-chef   chat                                      # l'agent d'agence
-hermes -p argus-client -z "un local pour mon cabinet à Lyon 6e"
-hermes -p argus-veille -z "prépare une fiche marché sur Lyon 6e"
+hermes -p argus-chef     chat                                      # l'agent d'agence
+hermes -p argus-client   -z "un local pour mon cabinet à Lyon 6e"
+hermes -p argus-veille   -z "prépare une fiche marché sur Lyon 6e"
+hermes -p argus-serveur  -z "où en est le serveur ?"               # gestion technique
 ```
+
+### L'interface (page web + application téléphone)
+
+```bash
+git clone https://github.com/MLD229/argus-ui.git
+cd argus-ui
+./argus-ui
+```
+
+Le script affiche l'adresse à ouvrir. Voir `INSTALLATION.md` pour l'adresse
+permanente et l'installation sur téléphone.
 
 ### Un seul profil
 
